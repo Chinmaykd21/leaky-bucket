@@ -1,4 +1,4 @@
-import LeakyBucket from "@/lib/leakyBucket";
+import LeakyBucket from "@/lib/leaky-bucket";
 import { NextRequest, NextResponse } from "next/server";
 
 const leakyBucket = new LeakyBucket(3, 60 * 1000); // 3 requests per minute

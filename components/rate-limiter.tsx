@@ -50,7 +50,7 @@ const RateLimiter = () => {
         className="font-semibold bg-white text-black w-1/3 rounded-full"
         onClick={makeNewRequest}
       >
-        Make a new request
+        Make an API request
       </button>
       <div className="text-center">
         <h1 className="text-xl">Status</h1>

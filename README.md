@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Leaky Bucket Rate Limiting in Next.js
 
-## Getting Started
+### Overview
 
-First, run the development server:
+This project demonstrates how to implement a rate limiter using the Leaky Bucket algorithm in a Next.js application. The Leaky Bucket algorithm is used to control the rate at which requests are processed, smoothing out bursts of traffic and preventing excessive load on the server.
+
+### Features
+
+- **Leaky Bucket Algorithm**: Implements a basic Leaky Bucket algorithm for rate limiting.
+- **Next.js Integration**: Demonstrates how to integrate the algorithm into Next.js API routes.
+- **TypeScript**: The project is fully written in TypeScript for type safety and better developer experience.
+- **React Frontend**: Includes a simple React component that interacts with the rate-limited API.
+- **TailwindCSS**:
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+> [Node.js](https://nodejs.org/en) (version 14.x or later)
+> [npm](https://www.npmjs.com/) (version 6.x or later) or Yarn (version 1.x or later)
+
+### Getting Started
+
+- Clone the Repository
 
 ```bash
+git clone https://github.com/yourusername/leaky-bucket-rate-limiter.git
+cd leaky-bucket-rate-limiter
+```
+
+### Install Dependencies
+
+```bash
+pnpm install
+# OR
+yarn install
+# OR
+npm install
+```
+
+### Running the Development Server
+
+To start the Next.js development server:
+
+```bash
+pnpm dev
+# or
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and navigate to http://localhost:3000 to see the application in action.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- `lib/leaky-bucket.ts`: Contains the implementation of the Leaky Bucket algorithm.
+- `app/api/hello/route.ts`: API route in Next.js that applies the Leaky Bucket rate limiting.
+- `components/rate-limiter.tsx`: React component that interacts with the rate-limited API.
+- `app/page.tsx`: The main page that displays the React component.
 
-## Learn More
+### Usage
 
-To learn more about Next.js, take a look at the following resources:
+Once the development server is running:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Navigate to the homepage (http://localhost:3000).
+- Click the "Make API Request" button to send a request to the - rate-limited API.
+- If you exceed the allowed number of requests, you will see an error message indicating that too many requests have been made.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Customization
 
-## Deploy on Vercel
+#### Adjusting Rate Limiting Parameters
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You can modify the rate limiting parameters in the `LeakyBucket` class:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `maxRequests`: The maximum number of requests allowed within the specified interval.
+- `interval`: The time window (in milliseconds) during which the requests are counted.
+
+For example, to allow 10 requests per minute, modify the initialization of the `LeakyBucket` in `app/api/hello/route.ts`:
+
+```typescript
+const leakyBucket = new LeakyBucket(10, 60 * 1000); // 10 requests per minute
+```
+
+### License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+### Contributing
+
+Contributions are welcome! If you'd like to contribute, please fork the repository, make your changes, and submit a pull request.
+
+### Acknowledgments
+
+[Next.js](https://nextjs.org/)
+[TypeScript](https://www.typescriptlang.org/)
+[TailwindCSS](https://tailwindcss.com/)
