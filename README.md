@@ -17,6 +17,7 @@ This project demonstrates how to implement a rate limiter using the Leaky Bucket
 Ensure you have the following installed:
 
 > [Node.js](https://nodejs.org/en) (version 14.x or later)
+
 > [npm](https://www.npmjs.com/) (version 6.x or later) or Yarn (version 1.x or later)
 
 ### Getting Started
@@ -24,7 +25,7 @@ Ensure you have the following installed:
 - Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/leaky-bucket-rate-limiter.git
+git clone https://github.com/Chinmaykd21/leaky-bucket-rate-limiter.git
 cd leaky-bucket-rate-limiter
 ```
 
@@ -64,7 +65,7 @@ Open your browser and navigate to http://localhost:3000 to see the application i
 Once the development server is running:
 
 - Navigate to the homepage (http://localhost:3000).
-- Click the "Make API Request" button to send a request to the - rate-limited API.
+- Click the "Make an API Request" button to send a request to the - rate-limited API.
 - If you exceed the allowed number of requests, you will see an error message indicating that too many requests have been made.
 
 ### Customization
