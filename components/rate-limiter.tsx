@@ -54,15 +54,19 @@ const RateLimiter = () => {
       </button>
       <div className="text-center">
         <h1 className="text-xl">Status</h1>
-        {requestState.response.length > 0 &&
-          requestState.error.length === 0 && (
-            <p>Data fetched: {requestState.response}</p>
+        <div className="min-h-4">
+          {requestState.response.length > 0 &&
+            requestState.error.length === 0 && (
+              <p className="text-sm italic">
+                Data fetched: {requestState.response}
+              </p>
+            )}
+        </div>
+        <div className="min-h-2">
+          {requestState.error.length > 0 && (
+            <p className="text-sm italic text-red-500">{requestState.error}</p>
           )}
-        {requestState.error.length > 0 && (
-          <p className="text-sm italic text-red-500">
-            Error: {requestState.error}
-          </p>
-        )}
+        </div>
       </div>
     </>
   );
