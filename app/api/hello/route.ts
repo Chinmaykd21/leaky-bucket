@@ -7,7 +7,19 @@ export async function GET(req: NextRequest) {
   // Provided by vercel
   const ip = req.ip ? req.ip : req.headers.get("x-forward-for");
 
-  if (!leakyBucket.addRequest(ip!)) {
+  if (!ip) {
+    return NextResponse.json(
+      {
+        error: "IP not found!!!",
+        message: "",
+      },
+      {
+        status: 400,
+      }
+    );
+  }
+
+  if (!leakyBucket.addRequest(ip)) {
     return NextResponse.json(
       {
         error: "Too many requests. Please try again after some time!",
